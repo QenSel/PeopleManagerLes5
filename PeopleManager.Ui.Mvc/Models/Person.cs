@@ -5,6 +5,7 @@ namespace PeopleManager.Ui.Mvc.Models
 {
     public class Person
     {
+        //Deze Required zijn voor de programmeurs 
         public int Id { get; set; }
 
         [Display(Name="First Name")]
