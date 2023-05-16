@@ -1,16 +1,25 @@
 ﻿@model Person
+@*Dit zet alle lege velden boven op de pagina*@
+@*<div asp-validation-summary="All"></div>*@
 
+@**@
+<div asp-validation-summary="ModelOnly"></div>
 <div class="mb-3">
+    
     <label asp-for="FirstName" class="form-label"></label>
     <input asp-for="FirstName" class="form-control" />
+    @*Geeft een melding waar het een lege veld is*@
+    <span asp-validation-for="FirstName"></span>
 </div>
 <div class="mb-3">
     <label asp-for="LastName" class="form-label">Last Name</label>
     <input asp-for="LastName" class="form-control" />
+    <span asp-validation-for="LastName"></span>
 </div>
 <div class="mb-3">
     <label asp-for="Email" class="form-label"></label>
     <input asp-for="Email" class="form-control" />
+    <span asp-validation-for="Email"></span>
 </div>
 <div class="mb-3">
     <label asp-for="Description" class="form-label"></label>

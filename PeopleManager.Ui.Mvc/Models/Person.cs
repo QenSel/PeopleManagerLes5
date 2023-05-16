@@ -10,6 +10,8 @@ namespace PeopleManager.Ui.Mvc.Models
 
         [Display(Name="First Name")]
         [Required]
+        //toont hoeveel characters je mag invoeren
+        [MinLength(3)] 
         public required string FirstName { get; set; }
 
         [Display(Name = "Last Name")]
