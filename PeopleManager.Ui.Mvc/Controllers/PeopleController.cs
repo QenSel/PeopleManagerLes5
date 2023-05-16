@@ -87,5 +87,41 @@ namespace PeopleManager.Ui.Mvc.Controllers
 
             return RedirectToAction("Index");
         }
+      
+        public IActionResult Delete(int id) 
+        {
+            var person = _dbContext.People.Find(id);
+          
+
+            if (person is null)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(person);
+        }
+        [HttpPost]
+        //Dit geeft onze methode een nieuwe url/Route voor de DeleteMethode te laten werken met de correcte gegevens
+        [Route("People/Delete/{id:int}")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            //var person = _dbContext.People.Find(id);
+            //if (person is null)
+            //{
+            //    return RedirectToAction("Index");
+            //}
+            var person = new Person
+            { 
+                Id = id,
+                FirstName = string.Empty,
+                LastName = string.Empty,
+                Email = string.Empty
+            };
+            _dbContext.People.Attach(person);
+
+            _dbContext.People.Remove(person);
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

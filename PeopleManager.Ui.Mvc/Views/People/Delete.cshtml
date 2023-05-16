@@ -1,0 +1,12 @@
+﻿@model Person
+
+@{
+    ViewBag.Title = "Delete Person";
+}
+<h1>@ViewBag.Title</h1>
+@*Asp Action DeleteConfirmed is een nieuwe url dus moet je een asp-route-id meegeven*@
+<form method="post" asp-action="DeleteConfirmed"asp-route-id="@Model.Id">
+    <p>Are you sure you want to delete @Model.FirstName @Model.LastName (@Model.Email)?</p>
+    <a asp-action="Index" class="btn btn-light">No</a>
+    <button type="submit" class="btn btn-danger">Yes</button>
+</form>
